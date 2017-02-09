@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			.main{
+				width: 400px;
+				height: 400px;
+				padding: 20px;
+				border: 5px solid #ccc;
+				margin: 100px auto;
+				transform-style: preserve-3d;
+				perspective: 100px;
+				
+			}
+			.main div{
+				width: 200px;
+				height: 200px;
+				background: red;
+				transition: all 3s;
+				margin:80px auto;
+				transform-origin: bottom;
+			}
+			.main:hover div{
+				transform: rotateX(60deg);
+				/*transform: rotateY(60deg);
+				transform: rotateZ(60deg);*/
+				/*transform: translateZ(200px);*/
+				/*transform: scale(2);*/
+			}
+		</style>
+	</head>
+	<body>
+		<!--transform-style :perserve-3d;----把变换的模式切换成3d的
+		perspective:100px;--------景深  近大远小（隔着多远看这个东西）-->
+		<div class="main">
+			<div></div>
+		</div>
+	</body>
+</html>

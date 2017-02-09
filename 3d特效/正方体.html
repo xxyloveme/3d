@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.main{
+				width: 100px;
+				height: 100px;
+				background: green;
+				position: relative;
+				margin: 300px auto;
+				transform-style: preserve-3d;
+				transition: all 3s;
+			}
+			.main div{
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				line-height: 100px;
+				color: white;
+				text-align: center;
+				font-size: 60px;
+			}
+			.main:hover{
+				/*transform: rotateY(360deg);*/
+				transform: rotateX(360deg);
+			}
+			.main div:nth-child(1){
+				top: -100px;
+				left: 0;
+				background: pink;
+				transform-origin:bottom ;
+				transform: rotateX(90deg);
+			}
+			.main div:nth-child(2){
+				top: 0;
+				left: -100px;
+				background: orange;
+				transform-origin:right ;
+				transform: rotateY(-90deg);
+			}
+			.main div:nth-child(3){
+				background: black;
+				/*transform-origin:center;*/
+				transform: rotateX(180deg) translateZ(100px);
+			}
+			.main div:nth-child(4){
+				top: 0;
+				left: 100px;
+				background: purple;
+				transform-origin:left;
+				transform: rotateY(90deg);
+			}
+			.main div:nth-child(5){
+				top: 100px;
+				left: 0;
+				background: blue;
+				transform-origin:top ;
+				transform: rotateX(-90deg);
+			}
+			.main div:nth-child(6){
+				background: yellowgreen;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div class="block">1</div>
+			<div class="block">2</div>
+			<div class="block">3</div>
+			<div class="block">4</div>
+			<div class="block">5</div>
+			<div class="block">6</div>			
+		</div>
+	</body>
+</html>

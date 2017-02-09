@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style id="style">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			li{
+				list-style: none;
+			}
+			.main{
+				width: 800px;
+				height: 360px;
+				margin: 100px auto;
+				perspective: 800px;
+				perspective-origin:center ;
+			}
+			#imgList{
+				width: 800px;
+				height: 360px;
+			}
+			#imgList li{
+				float: left;
+				width: 50px;
+				height: 360px;
+				position: relative;
+				transform-style: preserve-3d;
+				transform-origin: center center -180px; 
+			}
+			#imgList li a{
+				display: block;
+				width: 50px;
+				height: 360px;
+				position: absolute;
+			}
+			#imgList li a:nth-child(1){
+				background: url(img/01.jpg) no-repeat;
+				left: 0;
+				top: 0;
+			}
+			#imgList li a:nth-child(2){
+				background: url(img/02.jpg) no-repeat;
+				left: 0;
+				top: -360px;
+				transform-origin: bottom;
+				transform: rotateX(90deg);
+			}
+			#imgList li a:nth-child(3){
+				background: url(img/3.jpg) no-repeat;
+				transform:  translateZ(-360px);
+			}
+			#imgList li a:nth-child(4){
+				background: url(img/4.jpg) no-repeat;
+				left: 0;
+				top:360px;
+				transform-origin: top;
+				transform: rotateX(-90deg);
+			}
+			#imgList li span{
+				width: 360px;
+				height: 360px;
+				display: block;
+				background: #ccc;
+				position: absolute;
+				top: 0;
+			}
+			/*#imgList li span:nth-child(1){
+				left: 50px;
+				transform-origin:left;
+				transform: rotateY(90deg);
+			}
+			#imgList li span:nth-child(2){
+				left: -360px;
+				transform-origin:right;
+				transform: rotateY(-90deg);
+			}*/
+			#imgList li span:nth-of-type(1) {
+				left: 50px;
+				transform-origin: left;
+				transform: rotateY(90deg);
+			}
+			#imgList li span:nth-of-type(2) {
+				left: -360px;
+				transform-origin: right;
+				transform: rotateY(-90deg);
+			}
+			#order{
+				float: right;
+			}
+			#order li{
+				width: 40px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				color: white;
+				background: #aaa;
+				border-radius: 50%;
+				margin: 0 6px;
+				float: left;
+			}
+			#order .active{
+				background: #ff5757;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<ul id="imgList"></ul>
+			<ul id="order">
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+		</div>
+		
+		<script>
+			var oImgList = document.getElementById("imgList");
+			var aBtnList = document.getElementById("order").getElementsByTagName("li");
+			oLiWidth = 50;
+			num = oImgList.clientWidth/oLiWidth;
+			sLi = "";
+//			alert(num);
+			oStyle = document.getElementById("style");
+			index = 1;
+			upIndex = 0;
+			//往imgList插入num个li进去
+			for(var i=0;i<num;i++){
+				i>num/2 ? index--:index++;
+				sLi += '<li><a href=""></a><a href=""></a><a href=""></a><a href=""></a><span></span><span></span></li>';
+				oStyle.innerHTML += "#imgList li:nth-child("+(i+1)+") a{background-position:"+(-50*i)+"px 0}";
+				oStyle.innerHTML += "#imgList li:nth-child("+(i+1)+"){position:relative;z-index:"+index+"}";
+			}
+			
+			//往imgList插sLi;
+			oImgList.innerHTML = sLi;
+			
+			//获取到插入的li
+			var aImgList = oImgList.children;
+			
+			for(var i=0;i<aBtnList.length;i++){
+				(function(index){
+					aBtnList[index].onclick = function(){
+						aBtnList[upIndex].className = "";
+						this.className = "active";
+						upIndex = index;
+						for(var i=0;i<aImgList.length;i++){
+							aImgList[i].style.transition = "all 1s "+(i*100)+"ms";
+							aImgList[i].style.WebkitTransform = "rotateX("+(-index*90)+"deg)";
+						}
+					}
+				})(i)
+			}
+		</script>
+	</body>
+</html>

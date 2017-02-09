@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.main{
+				/*width: 100px;
+				height: 100px;*/
+				padding: 100px;
+				border: 2px solid #ccc;
+				margin: 100px auto;
+			}
+			.main div{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+			.main:hover div{
+				animation:move 3s;
+			}
+			@keyframes move{
+				/*0%{
+					width:100px;
+				}
+				50%{
+					width:500px;
+				}
+				100%{
+					width:100px;
+				}*/
+				from{
+					width: 100px;
+				}
+				to{
+					width: 600px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!--transition----指定时间和效果-->
+		<!--animation 关键帧动画  某一个时间点，让它完成什么效果 flash -->
+		<!--指定关键帧  keyframes-->
+		<!--@keyframes  指定关键帧的动画：
+		1.百分比
+		2.from to
+		关键帧动画执行完之后,并不能保持最后给它定义的样式
+		-->
+		<div class="main">
+			<div></div>
+		</div>
+	</body>
+</html>
